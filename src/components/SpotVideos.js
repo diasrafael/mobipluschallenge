@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   View,
+  Button,
   Text,
   FlatList,
   StyleSheet,
@@ -42,6 +43,19 @@ export default function SpotVideos() {
 
   return (
     <View style={styles.conteiner}>
+      <View>
+        <View>
+          <Text style={styles.textHeader}>MOBIPLUS</Text>
+        </View>
+        <View style={styles.buttons}>
+          <TouchableOpacity>
+            <Text style={styles.button}>Brasil</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.button}>Estados Unidos</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
       <FlatList
         style={{marginTop: 20, marginBottom: 20}}
         contentContainerStyle={styles.list}
@@ -56,6 +70,25 @@ export default function SpotVideos() {
 const styles = StyleSheet.create({
   conteiner: {
     backgroundColor: '#202020',
+    alignItems: 'center',
+  },
+  textHeader: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#FFF',
+    padding: 20,
+  },
+  buttons: {
+    flexDirection: 'row',
+  },
+  button: {
+    borderWidth: 3,
+    padding: 10,
+    borderColor: '#FFF',
+    color: '#FFF',
+    textAlign: 'center',
+    marginLeft: 5,
   },
   list: {
     paddingHorizontal: 20,
