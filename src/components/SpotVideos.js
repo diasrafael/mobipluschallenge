@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
   View,
-  Button,
   Text,
   FlatList,
   StyleSheet,
@@ -11,19 +10,29 @@ import {
 } from 'react-native';
 
 import api from '../services/api';
+import {Switch} from 'react-native-gesture-handler';
 
 export default function SpotVideos() {
   const [videos, setVideos] = useState([]);
+  const [chenge, setChenge] = useState('br');
 
   useEffect(() => {
     async function loadVideos() {
-      const response = await api.get('/youtube-trends?region=br');
+      const response = await api.get(`/youtube-trends?region=${chenge}`);
       const data = response.data;
       setVideos(data);
     }
 
     loadVideos();
-  }, []);
+  }, [chenge]);
+
+  function chengeLocation() {
+    if (chenge === 'br') {
+      return setChenge('us');
+    }
+
+    setChenge('br');
+  }
 
   const renderItem = (video) => (
     <View style={styles.listItem}>
@@ -47,12 +56,9 @@ export default function SpotVideos() {
         <View>
           <Text style={styles.textHeader}>MOBIPLUS</Text>
         </View>
-        <View style={styles.buttons}>
-          <TouchableOpacity>
-            <Text style={styles.button}>Brasil</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.button}>Estados Unidos</Text>
+        <View>
+          <TouchableOpacity onPress={chengeLocation}>
+            <Text style={styles.button}>Mudar região</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -79,16 +85,12 @@ const styles = StyleSheet.create({
     color: '#FFF',
     padding: 20,
   },
-  buttons: {
-    flexDirection: 'row',
-  },
   button: {
     borderWidth: 3,
     padding: 10,
     borderColor: '#FFF',
     color: '#FFF',
     textAlign: 'center',
-    marginLeft: 5,
   },
   list: {
     paddingHorizontal: 20,
