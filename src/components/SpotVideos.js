@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import api from '../services/api';
-import {Switch} from 'react-native-gesture-handler';
 
 export default function SpotVideos() {
   const [videos, setVideos] = useState([]);
@@ -54,9 +53,6 @@ export default function SpotVideos() {
     <View style={styles.conteiner}>
       <View>
         <View>
-          <Text style={styles.textHeader}>MOBIPLUS</Text>
-        </View>
-        <View>
           <TouchableOpacity onPress={chengeLocation}>
             <Text style={styles.button}>Mudar região</Text>
           </TouchableOpacity>
@@ -77,13 +73,6 @@ const styles = StyleSheet.create({
   conteiner: {
     backgroundColor: '#202020',
     alignItems: 'center',
-  },
-  textHeader: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#FFF',
-    padding: 20,
   },
   button: {
     borderWidth: 3,
