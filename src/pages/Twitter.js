@@ -10,17 +10,17 @@ import {
 import SpotVideos from '../components/SpotVideos';
 
 async function handleSubmit() {
-  navigation.navigate('Twitter');
+  navigation.navigate('Home');
 }
 
-export default function Home() {
+export default function Twitter() {
   return (
     <SafeAreaView style={styles.conteiner}>
       <View>
         <View style={styles.header}>
           <Text style={styles.textHeader}>MOBIPLUS</Text>
           <TouchableOpacity onPress={handleSubmit}>
-            <Text style={styles.button}>Twitter</Text>
+            <Text style={styles.button}>Youtube</Text>
           </TouchableOpacity>
         </View>
         <SpotVideos />
